@@ -104,8 +104,8 @@ namespace SnakeGame
                     if (DetectCollision()) // checks if it collides
                         Die();
 
-                    //if (AteFood()) // checks if it collides with a food object
-                    //    Eat();
+                    if (AteFood()) // checks if it collides with a food object
+                        Eat();
                 }
             }
         }
@@ -120,6 +120,7 @@ namespace SnakeGame
 
             while (true) // makes sure the food doesn't spawn on top of the snake
             {
+                collides = false;
                 food.xCoord = getPos.Next(0, maxXPosition);
                 food.yCoord = getPos.Next(0, maxYPosition);
 
@@ -132,6 +133,16 @@ namespace SnakeGame
                 if (!collides)
                     break;
             }
+        }
+        public void Eat()
+        {
+            //Add piece to body
+            Square food = new Square();
+            food.xCoord = snake[snake.Count - 1].xCoord;
+            food.yCoord = snake[snake.Count - 1].yCoord;
+
+            snake.Add(food);
+            GenerateFood();
         }
         private void Die()
         {
@@ -150,9 +161,9 @@ namespace SnakeGame
                 for (int i = 0; i < snake.Count; i++)
                 {
                     if (i == 0)
-                        snakeColor = Brushes.DarkSeaGreen; // color of the head
+                        snakeColor = Brushes.Black; // color of the head
                     else
-                        snakeColor = Brushes.Black; // color of the body
+                        snakeColor = Brushes.DarkGreen; // color of the body
 
                     // Draw Snake Piece
                     canvas.FillRectangle(snakeColor, new Rectangle(
@@ -191,15 +202,15 @@ namespace SnakeGame
 
             return collided;
         }
-        //private bool AteFood()
-        //{
-        //    bool ate = false;
+        private bool AteFood()
+        {
+            bool ate = false;
 
-        //    if (snake[0].xCoord == food.xCoord && snake[0].yCoord == food.yCoord)
-        //        ate = true;
+            if (snake[0].xCoord == food.xCoord && snake[0].yCoord == food.yCoord)
+                ate = true;
 
-        //    return ate;
-        //}
+            return ate;
+        }
 
         private void GameWindow_KeyUp(object sender, KeyEventArgs e)
         {
