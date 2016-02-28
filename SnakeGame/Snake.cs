@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SnakeGame
@@ -20,6 +15,8 @@ namespace SnakeGame
 
             //set settings to default
             new Settings();
+
+            lblScore.Text = "Score: " + Settings.Score; 
 
             //Set game speed and start the timer
             gameTimer.Interval = 1000 / Settings.GameSpeed;
@@ -71,6 +68,7 @@ namespace SnakeGame
                 MovePlayer();
             }
 
+            lblScore.Text = "Score: " + Settings.Score;
             pbCanvas.Invalidate(); //Updates the screen
         }
 
@@ -143,10 +141,12 @@ namespace SnakeGame
 
             snake.Add(food);
             GenerateFood();
+            Settings.Score += Settings.Points;
         }
         private void Die()
         {
             Settings.GameOver = true;
+            Settings.Score = 0;
         }
 
         private void pbCanvas_Paint(object sender, PaintEventArgs e)

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.pbCanvas = new System.Windows.Forms.PictureBox();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
+            this.lblScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,11 +45,22 @@
             this.pbCanvas.TabStop = false;
             this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCanvas_Paint);
             // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblScore.Location = new System.Drawing.Point(5, 549);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(118, 37);
+            this.lblScore.TabIndex = 1;
+            this.lblScore.Text = "Score: ";
+            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 614);
+            this.Controls.Add(this.lblScore);
             this.Controls.Add(this.pbCanvas);
             this.Name = "GameWindow";
             this.Text = "Snake Game";
@@ -57,6 +69,7 @@
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameWindow_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -64,6 +77,7 @@
 
         private System.Windows.Forms.PictureBox pbCanvas;
         private System.Windows.Forms.Timer gameTimer;
+        private System.Windows.Forms.Label lblScore;
     }
 }
 
