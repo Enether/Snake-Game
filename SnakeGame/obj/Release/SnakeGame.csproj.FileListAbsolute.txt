@@ -6,3 +6,4 @@ D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\o
 D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Release\SnakeGame.csproj.GenerateResource.Cache
 D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Release\SnakeGame.exe
 D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Release\SnakeGame.pdb
+D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Release\SnakeGame.csprojResolveAssemblyReference.cache

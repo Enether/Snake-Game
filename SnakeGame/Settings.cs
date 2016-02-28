@@ -5,6 +5,7 @@ namespace SnakeGame
     public enum Direction { Up, Down, Left, Right };
     class Settings
     {
+        public static double Multiplier { get; set; }
         public static ushort Width { get; set; }
         public static ushort Height { get; set; }
         public static ushort GameSpeed { get; set; }
@@ -20,6 +21,7 @@ namespace SnakeGame
             GameSpeed = 16;
             Score = 0;
             Points = 100;
+            Multiplier = 1;
             GameOver = false;
             Direction = Direction.Right;
         }
