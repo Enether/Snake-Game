@@ -34,6 +34,7 @@
             this.lblScore = new System.Windows.Forms.Label();
             this.btnStartGame = new System.Windows.Forms.Button();
             this.lblGameOver = new System.Windows.Forms.Label();
+            this.lblMultiplier = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,11 +82,21 @@
             this.lblGameOver.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblGameOver.Visible = false;
             // 
+            // lblMultiplier
+            // 
+            this.lblMultiplier.AutoSize = true;
+            this.lblMultiplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMultiplier.Location = new System.Drawing.Point(5, 512);
+            this.lblMultiplier.Name = "lblMultiplier";
+            this.lblMultiplier.Size = new System.Drawing.Size(0, 37);
+            this.lblMultiplier.TabIndex = 4;
+            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 614);
+            this.Controls.Add(this.lblMultiplier);
             this.Controls.Add(this.lblGameOver);
             this.Controls.Add(this.btnStartGame);
             this.Controls.Add(this.lblScore);
@@ -109,6 +120,7 @@
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Button btnStartGame;
         private System.Windows.Forms.Label lblGameOver;
+        private System.Windows.Forms.Label lblMultiplier;
     }
 }
 

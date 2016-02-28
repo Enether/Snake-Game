@@ -10,6 +10,7 @@ namespace SnakeGame
     {
         private List<Square> snake = new List<Square>();
         private Square food = new Square();
+        private double multiplierIncrement = 0.15;
         public GameWindow()
         {
             InitializeComponent();
@@ -33,15 +34,18 @@ namespace SnakeGame
             lblGameOver.Visible = false;
             btnStartGame.Enabled = false;
 
-            Square head = new Square(); // creates new snake
-            head.xCoord = 10;
-            head.yCoord = 5;
-            snake.Add(head);
+            // creates new snake
+            Square head = new Square(); 
+            Square piece = new Square();
+            piece.xCoord = head.xCoord = 10;
+            piece.yCoord = head.yCoord = 5;
+            snake.Add(head);    
+            snake.Add(piece);
 
             GenerateFood();
 
             lblScore.Text = "Score: " + Settings.Score;
-
+            lblMultiplier.Text = string.Format("Multiplier: {0:0.00}", Settings.Multiplier);
 
         }
         private void UpdateScreen(object sender, EventArgs e)
@@ -143,8 +147,10 @@ namespace SnakeGame
 
             snake.Add(food);
             GenerateFood();
-            Settings.Score += Settings.Points;
+            Settings.Score += (int)(Settings.Points * Settings.Multiplier);
+            Settings.Multiplier += multiplierIncrement;
             lblScore.Text = "Score: " + Settings.Score;
+            lblMultiplier.Text = string.Format("Multiplier: {0:0.00}", Settings.Multiplier);
         }
         private void Die(int death)
         {

@@ -21,7 +21,7 @@ namespace SnakeGame
             GameSpeed = 16;
             Score = 0;
             Points = 100;
-            Multiplier = 1;
+            Multiplier = 1.00;
             GameOver = false;
             Direction = Direction.Right;
         }
