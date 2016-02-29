@@ -14,14 +14,14 @@ namespace SnakeGame
         public GameWindow()
         {
             InitializeComponent();
-
             //set settings to default
             new Settings();
 
-            lblScore.Text = "Score: " + Settings.Score; 
+            lblScore.Text = "Score: " + Settings.Score;
 
             //Set game speed and start the timer
-            gameTimer.Interval = 1000 / Settings.GameSpeed;
+            Difficulty.GameSpeed = 16; // default, medium difficulty
+            gameTimer.Interval = 1000 / Difficulty.GameSpeed;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
 
@@ -33,6 +33,7 @@ namespace SnakeGame
             snake.Clear(); // deletes old snake
             lblGameOver.Visible = false;
             btnStartGame.Enabled = false;
+            radioBtnGroupBox.Enabled = false;
 
             // creates new snake
             Square head = new Square(); 
@@ -147,7 +148,7 @@ namespace SnakeGame
 
             snake.Add(food);
             GenerateFood();
-            Settings.Score += (int)(Settings.Points * Settings.Multiplier);
+            Settings.Score += (int)(Difficulty.Points * Settings.Multiplier);
             Settings.Multiplier += multiplierIncrement;
             lblScore.Text = "Score: " + Settings.Score;
             lblMultiplier.Text = string.Format("Multiplier: {0:0.00}", Settings.Multiplier);
@@ -168,6 +169,7 @@ namespace SnakeGame
             lblGameOver.Text = sb.ToString();
             lblGameOver.Visible = true;
             btnStartGame.Enabled = true;
+            radioBtnGroupBox.Enabled = true;
             Settings.Score = 0;
 
         }
@@ -253,6 +255,27 @@ namespace SnakeGame
         private void GameWindow_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             e.IsInputKey = true;
+        }
+
+        private void radioBtnEasy_CheckedChanged(object sender, EventArgs e)
+        {
+            Difficulty.Points = 75;
+            Difficulty.GameSpeed = 8;
+            gameTimer.Interval = 1000 / Difficulty.GameSpeed;
+        }
+
+        private void radioBtnMedium_CheckedChanged(object sender, EventArgs e)
+        {
+            Difficulty.Points = 100;
+            Difficulty.GameSpeed = 16;
+            gameTimer.Interval = 1000 / Difficulty.GameSpeed;
+        }
+
+        private void radioBtnHard_CheckedChanged(object sender, EventArgs e)
+        {
+            Difficulty.Points = 175;
+            Difficulty.GameSpeed = 24;
+            gameTimer.Interval = 1000 / Difficulty.GameSpeed;
         }
     }
 }
