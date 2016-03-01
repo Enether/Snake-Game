@@ -16,11 +16,11 @@ namespace SnakeGame
             InitializeComponent();
             //set settings to default
             new Settings();
+            new Difficulty(100, 16);
 
             lblScore.Text = "Score: " + Settings.Score;
 
             //Set game speed and start the timer
-            Difficulty.GameSpeed = 16; // default, medium difficulty
             gameTimer.Interval = 1000 / Difficulty.GameSpeed;
             gameTimer.Tick += UpdateScreen;
             gameTimer.Start();
