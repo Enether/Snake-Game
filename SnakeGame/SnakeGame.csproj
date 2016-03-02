@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Difficulty.cs" />
     <Compile Include="Input.cs" />
+    <Compile Include="ScoreReader.cs" />
+    <Compile Include="ScoreWriter.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Snake.cs">
       <SubType>Form</SubType>

@@ -39,6 +39,10 @@
             this.radioBtnHard = new System.Windows.Forms.RadioButton();
             this.radioBtnMedium = new System.Windows.Forms.RadioButton();
             this.radioBtnEasy = new System.Windows.Forms.RadioButton();
+            this.lblHighestScore = new System.Windows.Forms.Label();
+            this.lblMediumHighScore = new System.Windows.Forms.Label();
+            this.lblEasyHighScore = new System.Windows.Forms.Label();
+            this.lblHardHighScore = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
             this.radioBtnGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -145,11 +149,55 @@
             this.radioBtnEasy.UseVisualStyleBackColor = true;
             this.radioBtnEasy.CheckedChanged += new System.EventHandler(this.radioBtnEasy_CheckedChanged);
             // 
+            // lblHighestScore
+            // 
+            this.lblHighestScore.AutoSize = true;
+            this.lblHighestScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHighestScore.Location = new System.Drawing.Point(490, 430);
+            this.lblHighestScore.Name = "lblHighestScore";
+            this.lblHighestScore.Size = new System.Drawing.Size(193, 37);
+            this.lblHighestScore.TabIndex = 6;
+            this.lblHighestScore.Text = "High Score: ";
+            // 
+            // lblMediumHighScore
+            // 
+            this.lblMediumHighScore.AutoSize = true;
+            this.lblMediumHighScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMediumHighScore.Location = new System.Drawing.Point(490, 524);
+            this.lblMediumHighScore.Name = "lblMediumHighScore";
+            this.lblMediumHighScore.Size = new System.Drawing.Size(139, 37);
+            this.lblMediumHighScore.TabIndex = 7;
+            this.lblMediumHighScore.Text = "Medium:";
+            // 
+            // lblEasyHighScore
+            // 
+            this.lblEasyHighScore.AutoSize = true;
+            this.lblEasyHighScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEasyHighScore.Location = new System.Drawing.Point(490, 477);
+            this.lblEasyHighScore.Name = "lblEasyHighScore";
+            this.lblEasyHighScore.Size = new System.Drawing.Size(96, 37);
+            this.lblEasyHighScore.TabIndex = 8;
+            this.lblEasyHighScore.Text = "Easy:";
+            // 
+            // lblHardHighScore
+            // 
+            this.lblHardHighScore.AutoSize = true;
+            this.lblHardHighScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHardHighScore.Location = new System.Drawing.Point(490, 571);
+            this.lblHardHighScore.Name = "lblHardHighScore";
+            this.lblHardHighScore.Size = new System.Drawing.Size(96, 37);
+            this.lblHardHighScore.TabIndex = 9;
+            this.lblHardHighScore.Text = "Hard:";
+            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 614);
+            this.Controls.Add(this.lblHardHighScore);
+            this.Controls.Add(this.lblEasyHighScore);
+            this.Controls.Add(this.lblMediumHighScore);
+            this.Controls.Add(this.lblHighestScore);
             this.Controls.Add(this.radioBtnGroupBox);
             this.Controls.Add(this.lblMultiplier);
             this.Controls.Add(this.lblGameOver);
@@ -182,6 +230,10 @@
         private System.Windows.Forms.RadioButton radioBtnHard;
         private System.Windows.Forms.RadioButton radioBtnMedium;
         private System.Windows.Forms.RadioButton radioBtnEasy;
+        private System.Windows.Forms.Label lblHighestScore;
+        private System.Windows.Forms.Label lblMediumHighScore;
+        private System.Windows.Forms.Label lblEasyHighScore;
+        private System.Windows.Forms.Label lblHardHighScore;
     }
 }
 
