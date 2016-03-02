@@ -11,14 +11,21 @@ namespace SnakeGame
         private List<Square> snake = new List<Square>();
         private Square food = new Square();
         private double multiplierIncrement = 0.15;
+        ScoreWriter sw = new ScoreWriter();
+        
+        // TO DO: Add Multiplier bonus for quickness
         public GameWindow()
         {
             InitializeComponent();
             //set settings to default
             new Settings();
             new Difficulty(100, 16);
-
+            new ScoreReader();
             lblScore.Text = "Score: " + Settings.Score;
+            lblEasyHighScore.Text = "Easy: " + ScoreReader.ReadScore()["easyScore"];
+            lblMediumHighScore.Text = "Medium: " + ScoreReader.ReadScore()["mediumScore"];
+            lblHardHighScore.Text = "Hard: " + ScoreReader.ReadScore()["hardScore"];
+            lblHighestScore.Text = "Highest Score: " + Math.Max(ScoreReader.ReadScore()["easyScore"], Math.Max(ScoreReader.ReadScore()["mediumScore"], ScoreReader.ReadScore()["hardScore"]));
 
             //Set game speed and start the timer
             gameTimer.Interval = 1000 / Difficulty.GameSpeed;
@@ -46,7 +53,7 @@ namespace SnakeGame
             GenerateFood();
 
             lblScore.Text = "Score: " + Settings.Score;
-            lblMultiplier.Text = string.Format("Multiplier: {0:0.00}", Settings.Multiplier);
+            lblMultiplier.Text = string.Format("Multiplier: x{0:0.00}", Settings.Multiplier);
 
         }
         private void UpdateScreen(object sender, EventArgs e)
@@ -61,16 +68,16 @@ namespace SnakeGame
             else
             {
                 // makes sure it doesn't do impossible moves
-                if (Input.KeyPressed(Keys.Right) && Settings.Direction != Direction.Left)
+                if ((Input.KeyPressed(Keys.Right) || Input.KeyPressed(Keys.D)) && Settings.Direction != Direction.Left)
                     Settings.Direction = Direction.Right;
 
-                else if (Input.KeyPressed(Keys.Left) && Settings.Direction != Direction.Right)
+                else if ((Input.KeyPressed(Keys.Left) || Input.KeyPressed(Keys.A)) && Settings.Direction != Direction.Right)
                     Settings.Direction = Direction.Left;
 
-                else if (Input.KeyPressed(Keys.Up) && Settings.Direction != Direction.Down)
+                else if ((Input.KeyPressed(Keys.Up) || Input.KeyPressed(Keys.W)) && Settings.Direction != Direction.Down)
                     Settings.Direction = Direction.Up;
 
-                else if (Input.KeyPressed(Keys.Down) && Settings.Direction != Direction.Up)
+                else if ((Input.KeyPressed(Keys.Down) || Input.KeyPressed(Keys.S)) && Settings.Direction != Direction.Up)
                     Settings.Direction = Direction.Down;
 
                 MovePlayer();
@@ -151,7 +158,7 @@ namespace SnakeGame
             Settings.Score += (int)(Difficulty.Points * Settings.Multiplier);
             Settings.Multiplier += multiplierIncrement;
             lblScore.Text = "Score: " + Settings.Score;
-            lblMultiplier.Text = string.Format("Multiplier: {0:0.00}", Settings.Multiplier);
+            lblMultiplier.Text = string.Format("Multiplier: x{0:0.00}", Settings.Multiplier);
         }
         private void Die(int death)
         {
@@ -170,6 +177,7 @@ namespace SnakeGame
             lblGameOver.Visible = true;
             btnStartGame.Enabled = true;
             radioBtnGroupBox.Enabled = true;
+            CheckHighScore();
             Settings.Score = 0;
 
         }
@@ -250,6 +258,38 @@ namespace SnakeGame
         private void btnStartGame_Click(object sender, EventArgs e)
         {
             StartGame();
+        }
+        private void CheckHighScore()
+        {
+            int currentScore = Settings.Score;
+
+            // check if the current score is a high score and if it is, write it down and update the label
+            if(radioBtnEasy.Checked == true)
+            {
+                if (currentScore > ScoreReader.ReadScore()["easyScore"])
+                {
+                    ScoreWriter.WriteEasyScore(currentScore);
+                    lblEasyHighScore.Text = "Easy: " + currentScore;
+                }
+            }
+            else if(radioBtnMedium.Checked == true)
+            {
+                if (currentScore > ScoreReader.ReadScore()["mediumScore"])
+                {
+                    ScoreWriter.WriteMediumScore(currentScore);
+                    lblMediumHighScore.Text = "Medium: " + currentScore;
+                }
+            }
+            else if(radioBtnHard.Checked == true)
+            {
+                if (currentScore > ScoreReader.ReadScore()["hardScore"])
+                {
+                    ScoreWriter.WriteHardScore(currentScore);
+                    lblHardHighScore.Text = "Hard: " + currentScore;
+                }
+            }
+            // update the highest score label in case the current high score is the biggest of them all
+            lblHighestScore.Text = "Highest Score: " + Math.Max(ScoreReader.ReadScore()["easyScore"], Math.Max(ScoreReader.ReadScore()["mediumScore"], ScoreReader.ReadScore()["hardScore"]));
         }
 
         private void GameWindow_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
