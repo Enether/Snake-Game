@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace SnakeGame
         private Square food = new Square();
         private double multiplierIncrement = 0.15;
         ScoreWriter sw = new ScoreWriter();
+        Stopwatch multiplierStopwatch = new Stopwatch();
         
         // TO DO: Add Multiplier bonus for quickness
         public GameWindow()
@@ -62,7 +64,7 @@ namespace SnakeGame
             {
                 if (Input.KeyPressed(Keys.Enter))
                 {
-                    StartGame();
+                    StartGame();                    
                 }
             }
             else
@@ -123,6 +125,7 @@ namespace SnakeGame
         }
         private void GenerateFood()
         {
+            multiplierStopwatch.Restart();
             ushort maxXPosition = (ushort)(pbCanvas.Size.Width / Settings.Width);
             ushort maxYPosition = (ushort)(pbCanvas.Size.Height / Settings.Height);
             bool collides = false;
@@ -148,6 +151,7 @@ namespace SnakeGame
         }
         public void Eat()
         {
+            multiplierStopwatch.Stop();
             //Add piece to body
             Square food = new Square();
             food.xCoord = snake[snake.Count - 1].xCoord;
@@ -155,7 +159,12 @@ namespace SnakeGame
 
             snake.Add(food);
             GenerateFood();
-            Settings.Score += (int)(Difficulty.Points * Settings.Multiplier);
+
+            if(multiplierStopwatch.ElapsedMilliseconds  > 1200)
+                Settings.Score += (int)(Difficulty.Points * Settings.Multiplier);
+            else
+                Settings.Score += (int)(Difficulty.Points * Settings.Multiplier)*2;
+
             Settings.Multiplier += multiplierIncrement;
             lblScore.Text = "Score: " + Settings.Score;
             lblMultiplier.Text = string.Format("Multiplier: x{0:0.00}", Settings.Multiplier);
