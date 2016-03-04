@@ -8,6 +8,8 @@ namespace SnakeGame
         public SettingsForm()
         {
             InitializeComponent();
+            if (Settings.StopSoundtrack) // makes sure the checkbox is checked if it has been checked ealier
+                checkboxStopSoundtrack.Checked = true;
             this.Focus();
         }
 
@@ -32,6 +34,21 @@ namespace SnakeGame
         {
             Settings.BackgroundColor = BackgroundColor.DarkKhaki;
             this.Focus();
+        }
+
+        private void checkboxStopSoundtrack_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkboxStopSoundtrack.Checked == true)
+            {
+                Settings.StopSoundtrack = true;
+                Settings.StartSoundtrack = false;
+            }
+            else
+            {
+                // Starts the soundtrack if user unchecks the checkbox
+                Settings.StopSoundtrack = false;
+                Settings.StartSoundtrack = true;
+            }
         }
     }
 }

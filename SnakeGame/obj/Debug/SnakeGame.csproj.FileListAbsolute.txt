@@ -8,3 +8,8 @@ D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\o
 D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Debug\SnakeGame.pdb
 D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Debug\SnakeGame.GameWindow.resources
 D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Debug\SnakeGame.SettingsForm.resources
+D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Debug\Interop.WMPLib.dll
+D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Debug\AxInterop.WMPLib.dll
+D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csproj.ResolveComReference.cache
+D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\bin\Debug\Interop.WMPLib.dll
+D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\bin\Debug\AxInterop.WMPLib.dll

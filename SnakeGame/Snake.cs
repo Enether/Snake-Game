@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Media;
 using System.Text;
 using System.Windows.Forms;
 
@@ -14,9 +15,11 @@ namespace SnakeGame
         private double multiplierIncrement = 0.15;
         ScoreWriter sw = new ScoreWriter();
         Stopwatch multiplierStopwatch = new Stopwatch();
-        
+        SoundPlayer backgroundSoundtrack = new SoundPlayer(@"..\..\Sounds\bgMusic.wav");
+              
         public GameWindow()
         {
+            backgroundSoundtrack.PlayLooping();
             InitializeComponent();
             //set settings to default
             new Settings();
@@ -426,7 +429,13 @@ namespace SnakeGame
                     break;
             }
         }
-
+        private void CheckSoundtrackStop()
+        {
+            if (Settings.StopSoundtrack)
+                backgroundSoundtrack.Stop();
+            else if (Settings.StartSoundtrack)
+                backgroundSoundtrack.PlayLooping();
+        }
         private void btnSettings_Click(object sender, EventArgs e)
         {
             SettingsForm settingsForm = new SettingsForm();
@@ -436,6 +445,7 @@ namespace SnakeGame
         private void SettingsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             CheckBackgroundColor();
+            CheckSoundtrackStop();
             btnStartGame.Focus();
         }
     }

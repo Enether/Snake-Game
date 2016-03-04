@@ -37,6 +37,7 @@
             this.lblIndigoBG = new System.Windows.Forms.Label();
             this.btnDarkKhakiBG = new System.Windows.Forms.Button();
             this.lblDarkKhakiBG = new System.Windows.Forms.Label();
+            this.checkboxStopSoundtrack = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // lblSelectBG
@@ -128,11 +129,23 @@
             this.lblDarkKhakiBG.TabIndex = 8;
             this.lblDarkKhakiBG.Text = "Dark Khaki";
             // 
+            // checkboxStopSoundtrack
+            // 
+            this.checkboxStopSoundtrack.AutoSize = true;
+            this.checkboxStopSoundtrack.Location = new System.Drawing.Point(15, 152);
+            this.checkboxStopSoundtrack.Name = "checkboxStopSoundtrack";
+            this.checkboxStopSoundtrack.Size = new System.Drawing.Size(119, 17);
+            this.checkboxStopSoundtrack.TabIndex = 9;
+            this.checkboxStopSoundtrack.Text = "Disable Soundtrack";
+            this.checkboxStopSoundtrack.UseVisualStyleBackColor = true;
+            this.checkboxStopSoundtrack.CheckedChanged += new System.EventHandler(this.checkboxStopSoundtrack_CheckedChanged);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 240);
+            this.Controls.Add(this.checkboxStopSoundtrack);
             this.Controls.Add(this.lblDarkKhakiBG);
             this.Controls.Add(this.btnDarkKhakiBG);
             this.Controls.Add(this.lblIndigoBG);
@@ -160,5 +173,6 @@
         private System.Windows.Forms.Label lblIndigoBG;
         private System.Windows.Forms.Button btnDarkKhakiBG;
         private System.Windows.Forms.Label lblDarkKhakiBG;
+        private System.Windows.Forms.CheckBox checkboxStopSoundtrack;
     }
 }

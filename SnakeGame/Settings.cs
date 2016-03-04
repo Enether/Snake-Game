@@ -15,6 +15,8 @@ namespace SnakeGame
         public static bool GameOver { get; set; }
         public static Direction Direction { get; set; }
         public static BackgroundColor BackgroundColor { get; set; }
+        public static bool StopSoundtrack { get; set; }
+        public static bool StartSoundtrack { get; set; }
 
         public Settings()
         {
