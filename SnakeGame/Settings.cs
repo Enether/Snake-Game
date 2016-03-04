@@ -3,6 +3,7 @@
 namespace SnakeGame
 {
     public enum Direction { Up, Down, Left, Right };
+    public enum BackgroundColor { LightBlue,  Black, Indigo, DarkKhaki};
     class Settings
     {
         public static double Multiplier { get; set; }
@@ -13,6 +14,7 @@ namespace SnakeGame
 
         public static bool GameOver { get; set; }
         public static Direction Direction { get; set; }
+        public static BackgroundColor BackgroundColor { get; set; }
 
         public Settings()
         {
@@ -21,7 +23,7 @@ namespace SnakeGame
             Score = 0;
             Multiplier = 1.00;
             GameOver = false;
-            Direction = Direction.Right;
+            Direction = Direction.Right;           
         }
     }
 }

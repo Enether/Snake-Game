@@ -7,3 +7,4 @@ D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\b
 D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Debug\SnakeGame.exe
 D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Debug\SnakeGame.pdb
 D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Debug\SnakeGame.GameWindow.resources
+D:\C# PRODUCTIONS\SoftUni\Advanced CSharp\Teamwork Project\SnakeGame\SnakeGame\obj\Debug\SnakeGame.SettingsForm.resources

@@ -15,7 +15,6 @@ namespace SnakeGame
         ScoreWriter sw = new ScoreWriter();
         Stopwatch multiplierStopwatch = new Stopwatch();
         
-        // TO DO: Add Multiplier bonus for quickness
         public GameWindow()
         {
             InitializeComponent();
@@ -42,6 +41,7 @@ namespace SnakeGame
             snake.Clear(); // deletes old snake
             lblGameOver.Visible = false;
             btnStartGame.Enabled = false;
+            btnSettings.Enabled = false;
             radioBtnGroupBox.Enabled = false;
 
             // creates new snake
@@ -185,6 +185,7 @@ namespace SnakeGame
             lblGameOver.Text = sb.ToString();
             lblGameOver.Visible = true;
             btnStartGame.Enabled = true;
+            btnSettings.Enabled = true;
             radioBtnGroupBox.Enabled = true;
             CheckHighScore();
             Settings.Score = 0;
@@ -216,6 +217,74 @@ namespace SnakeGame
 
                 // Draw Food
                 canvas.FillEllipse(Brushes.Red, new Rectangle(
+                    food.xCoord * Settings.Width,
+                    food.yCoord * Settings.Height,
+                    Settings.Width, Settings.Height));
+            }
+            else
+            {
+                // Add Game Over message
+            }
+        }
+        private void pbCanvas_PaintBlack(object sender, PaintEventArgs e)
+        {
+            Graphics canvas = e.Graphics;
+
+            if (!Settings.GameOver)
+            {
+                Brush snakeColor;
+
+                //Draw Snake piece by piece
+                for (int i = 0; i < snake.Count; i++)
+                {
+                    if (i == 0)
+                        snakeColor = Brushes.LawnGreen; // color of the head
+                    else
+                        snakeColor = Brushes.DarkGreen; // color of the body
+
+                    // Draw Snake Piece
+                    canvas.FillRectangle(snakeColor, new Rectangle(
+                        snake[i].xCoord * Settings.Width,
+                        snake[i].yCoord * Settings.Height,
+                        Settings.Width, Settings.Height));
+                }
+
+                // Draw Food
+                canvas.FillEllipse(Brushes.Red, new Rectangle(
+                    food.xCoord * Settings.Width,
+                    food.yCoord * Settings.Height,
+                    Settings.Width, Settings.Height));
+            }
+            else
+            {
+                // Add Game Over message
+            }
+        }
+        private void pbCanvas_PaintIndigo(object sender, PaintEventArgs e)
+        {
+            Graphics canvas = e.Graphics;
+
+            if (!Settings.GameOver)
+            {
+                Brush snakeColor;
+
+                //Draw Snake piece by piece
+                for (int i = 0; i < snake.Count; i++)
+                {
+                    if (i == 0)
+                        snakeColor = Brushes.LawnGreen; // color of the head
+                    else
+                        snakeColor = Brushes.Green; // color of the body
+
+                    // Draw Snake Piece
+                    canvas.FillRectangle(snakeColor, new Rectangle(
+                        snake[i].xCoord * Settings.Width,
+                        snake[i].yCoord * Settings.Height,
+                        Settings.Width, Settings.Height));
+                }
+
+                // Draw Food
+                canvas.FillEllipse(Brushes.LightYellow, new Rectangle(
                     food.xCoord * Settings.Width,
                     food.yCoord * Settings.Height,
                     Settings.Width, Settings.Height));
@@ -325,6 +394,49 @@ namespace SnakeGame
             Difficulty.Points = 175;
             Difficulty.GameSpeed = 24;
             gameTimer.Interval = 1000 / Difficulty.GameSpeed;
+        }
+        private void CheckBackgroundColor()
+        {
+            // check the background color in settings.cs
+            switch (Settings.BackgroundColor)
+            {
+                case BackgroundColor.LightBlue:
+                    pbCanvas.BackColor = Color.LightBlue;
+                    lblGameOver.BackColor = Color.LightBlue;
+                    lblGameOver.ForeColor = Color.Black;
+                    pbCanvas.Paint += new PaintEventHandler(pbCanvas_Paint);
+                    break;
+                case BackgroundColor.Black:
+                    pbCanvas.BackColor = Color.Black;
+                    lblGameOver.BackColor = Color.Black;
+                    lblGameOver.ForeColor = Color.White;
+                    pbCanvas.Paint += new PaintEventHandler(pbCanvas_PaintBlack);
+                    break;
+                case BackgroundColor.Indigo:
+                    pbCanvas.BackColor = Color.Indigo;
+                    lblGameOver.BackColor = Color.Indigo;
+                    lblGameOver.ForeColor = Color.White;
+                    pbCanvas.Paint += new PaintEventHandler(pbCanvas_PaintIndigo);
+                    break;
+                case BackgroundColor.DarkKhaki:
+                    pbCanvas.BackColor = Color.DarkKhaki;
+                    lblGameOver.BackColor = Color.DarkKhaki;
+                    lblGameOver.ForeColor = Color.Black;
+                    pbCanvas.Paint += new PaintEventHandler(pbCanvas_Paint);
+                    break;
+            }
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            SettingsForm settingsForm = new SettingsForm();
+            settingsForm.Show();
+            settingsForm.FormClosed += new FormClosedEventHandler(SettingsForm_FormClosed);
+        }
+        private void SettingsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            CheckBackgroundColor();
+            btnStartGame.Focus();
         }
     }
 }

@@ -43,6 +43,7 @@
             this.lblMediumHighScore = new System.Windows.Forms.Label();
             this.lblEasyHighScore = new System.Windows.Forms.Label();
             this.lblHardHighScore = new System.Windows.Forms.Label();
+            this.btnSettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
             this.radioBtnGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -133,7 +134,6 @@
             this.radioBtnMedium.Name = "radioBtnMedium";
             this.radioBtnMedium.Size = new System.Drawing.Size(77, 23);
             this.radioBtnMedium.TabIndex = 6;
-            this.radioBtnMedium.TabStop = true;
             this.radioBtnMedium.Text = "Medium";
             this.radioBtnMedium.UseVisualStyleBackColor = true;
             this.radioBtnMedium.CheckedChanged += new System.EventHandler(this.radioBtnMedium_CheckedChanged);
@@ -189,11 +189,23 @@
             this.lblHardHighScore.TabIndex = 9;
             this.lblHardHighScore.Text = "Hard:";
             // 
+            // btnSettings
+            // 
+            this.btnSettings.Location = new System.Drawing.Point(12, 450);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(75, 23);
+            this.btnSettings.TabIndex = 10;
+            this.btnSettings.TabStop = false;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
             // GameWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 614);
+            this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.lblHardHighScore);
             this.Controls.Add(this.lblEasyHighScore);
             this.Controls.Add(this.lblMediumHighScore);
@@ -234,6 +246,7 @@
         private System.Windows.Forms.Label lblMediumHighScore;
         private System.Windows.Forms.Label lblEasyHighScore;
         private System.Windows.Forms.Label lblHardHighScore;
+        private System.Windows.Forms.Button btnSettings;
     }
 }
 
