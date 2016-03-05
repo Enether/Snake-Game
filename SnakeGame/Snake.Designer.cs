@@ -56,7 +56,7 @@
             this.pbCanvas.Size = new System.Drawing.Size(793, 407);
             this.pbCanvas.TabIndex = 0;
             this.pbCanvas.TabStop = false;
-            this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCanvas_Paint);
+            this.pbCanvas.Paint += new System.Windows.Forms.PaintEventHandler(this.pbCanvas_PaintLightBlue);
             // 
             // lblScore
             // 
@@ -134,6 +134,7 @@
             this.radioBtnMedium.Name = "radioBtnMedium";
             this.radioBtnMedium.Size = new System.Drawing.Size(77, 23);
             this.radioBtnMedium.TabIndex = 6;
+            this.radioBtnMedium.TabStop = true;
             this.radioBtnMedium.Text = "Medium";
             this.radioBtnMedium.UseVisualStyleBackColor = true;
             this.radioBtnMedium.CheckedChanged += new System.EventHandler(this.radioBtnMedium_CheckedChanged);
@@ -231,22 +232,21 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pbCanvas;
-        private System.Windows.Forms.Timer gameTimer;
-        private System.Windows.Forms.Label lblScore;
-        private System.Windows.Forms.Button btnStartGame;
-        private System.Windows.Forms.Label lblGameOver;
-        private System.Windows.Forms.Label lblMultiplier;
-        private System.Windows.Forms.GroupBox radioBtnGroupBox;
-        private System.Windows.Forms.RadioButton radioBtnHard;
-        private System.Windows.Forms.RadioButton radioBtnMedium;
-        private System.Windows.Forms.RadioButton radioBtnEasy;
-        private System.Windows.Forms.Label lblHighestScore;
-        private System.Windows.Forms.Label lblMediumHighScore;
-        private System.Windows.Forms.Label lblEasyHighScore;
-        private System.Windows.Forms.Label lblHardHighScore;
-        private System.Windows.Forms.Button btnSettings;
+        public System.Windows.Forms.Label lblMultiplier;
+        public System.Windows.Forms.Label lblScore;
+        public System.Windows.Forms.Button btnStartGame;
+        public System.Windows.Forms.Label lblGameOver;
+        public System.Windows.Forms.Button btnSettings;
+        public System.Windows.Forms.GroupBox radioBtnGroupBox;
+        public System.Windows.Forms.PictureBox pbCanvas;
+        public System.Windows.Forms.Label lblHighestScore;
+        public System.Windows.Forms.Label lblMediumHighScore;
+        public System.Windows.Forms.Label lblEasyHighScore;
+        public System.Windows.Forms.Label lblHardHighScore;
+        public System.Windows.Forms.Timer gameTimer;
+        public System.Windows.Forms.RadioButton radioBtnHard;
+        public System.Windows.Forms.RadioButton radioBtnMedium;
+        public System.Windows.Forms.RadioButton radioBtnEasy;
     }
 }
 

@@ -1,7 +1,7 @@
 ﻿
 namespace SnakeGame
 {
-    class Square
+    public class Square
     {
         public int xCoord { get; set; }
         public int yCoord { get; set; }
