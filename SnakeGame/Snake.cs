@@ -12,7 +12,7 @@ namespace SnakeGame
     {
         private List<Square> snake = new List<Square>();
         private Square food = new Square();
-        const double multiplierIncrement = 0.15;
+        const double MULTIPLIER_INCREMENT = 0.15;
         ScoreWriter sw = new ScoreWriter();
         Stopwatch multiplierStopwatch = new Stopwatch();
         SoundPlayer backgroundSoundtrack = new SoundPlayer(@"..\..\Sounds\bgMusic.wav");
@@ -169,7 +169,7 @@ namespace SnakeGame
             else
                 Settings.Score += (int)(Difficulty.Points * Settings.Multiplier)*2;
 
-            Settings.Multiplier += multiplierIncrement;
+            Settings.Multiplier += MULTIPLIER_INCREMENT;
             lblScore.Text = "Score: " + Settings.Score;
             lblMultiplier.Text = string.Format("Multiplier: x{0:0.00}", Settings.Multiplier);
         }
