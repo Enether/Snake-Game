@@ -12,11 +12,12 @@ namespace SnakeGame
     {
         private List<Square> snake = new List<Square>();
         private Square food = new Square();
-        private double multiplierIncrement = 0.15;
+        const double multiplierIncrement = 0.15;
         ScoreWriter sw = new ScoreWriter();
         Stopwatch multiplierStopwatch = new Stopwatch();
         SoundPlayer backgroundSoundtrack = new SoundPlayer(@"..\..\Sounds\bgMusic.wav");
-              
+           
+        // TODO: Need to create more classes and get the logic out of this class   
         public GameWindow()
         {
             backgroundSoundtrack.PlayLooping();
@@ -59,7 +60,6 @@ namespace SnakeGame
 
             lblScore.Text = "Score: " + Settings.Score;
             lblMultiplier.Text = string.Format("Multiplier: x{0:0.00}", Settings.Multiplier);
-
         }
         private void UpdateScreen(object sender, EventArgs e)
         {
@@ -155,7 +155,7 @@ namespace SnakeGame
         public void Eat()
         {
             multiplierStopwatch.Stop();
-            //Add piece to body
+            //Adds a piece to the body
             Square food = new Square();
             food.xCoord = snake[snake.Count - 1].xCoord;
             food.yCoord = snake[snake.Count - 1].yCoord;
@@ -163,6 +163,7 @@ namespace SnakeGame
             snake.Add(food);
             GenerateFood();
 
+            // bonus multiplier for speed
             if(multiplierStopwatch.ElapsedMilliseconds  > 1200)
                 Settings.Score += (int)(Difficulty.Points * Settings.Multiplier);
             else
@@ -190,9 +191,8 @@ namespace SnakeGame
             btnStartGame.Enabled = true;
             btnSettings.Enabled = true;
             radioBtnGroupBox.Enabled = true;
-            CheckHighScore();
+            CheckHighScore(); // checks if the current run was a high score and saves it in such case
             Settings.Score = 0;
-
         }
 
         private void pbCanvas_Paint(object sender, PaintEventArgs e)
@@ -224,10 +224,6 @@ namespace SnakeGame
                     food.yCoord * Settings.Height,
                     Settings.Width, Settings.Height));
             }
-            else
-            {
-                // Add Game Over message
-            }
         }
         private void pbCanvas_PaintBlack(object sender, PaintEventArgs e)
         {
@@ -258,10 +254,6 @@ namespace SnakeGame
                     food.yCoord * Settings.Height,
                     Settings.Width, Settings.Height));
             }
-            else
-            {
-                // Add Game Over message
-            }
         }
         private void pbCanvas_PaintIndigo(object sender, PaintEventArgs e)
         {
@@ -291,10 +283,6 @@ namespace SnakeGame
                     food.xCoord * Settings.Width,
                     food.yCoord * Settings.Height,
                     Settings.Width, Settings.Height));
-            }
-            else
-            {
-                // Add Game Over message
             }
         }
         private int DetectCollision()
@@ -381,7 +369,7 @@ namespace SnakeGame
         private void radioBtnEasy_CheckedChanged(object sender, EventArgs e)
         {
             Difficulty.Points = 75;
-            Difficulty.GameSpeed = 8;
+            Difficulty.GameSpeed = 12;
             gameTimer.Interval = 1000 / Difficulty.GameSpeed;
         }
 
@@ -400,7 +388,7 @@ namespace SnakeGame
         }
         private void CheckBackgroundColor()
         {
-            // check the background color in settings.cs
+            // checks the background color and changes it along with the game over text if need be
             switch (Settings.BackgroundColor)
             {
                 case BackgroundColor.LightBlue:
@@ -440,13 +428,17 @@ namespace SnakeGame
         {
             SettingsForm settingsForm = new SettingsForm();
             settingsForm.Show();
+
+            btnSettings.Enabled = false;
             settingsForm.FormClosed += new FormClosedEventHandler(SettingsForm_FormClosed);
         }
         private void SettingsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            // checks if any settings have been changed
             CheckBackgroundColor();
             CheckSoundtrackStop();
-            btnStartGame.Focus();
+            btnSettings.Enabled = true;
+            btnStartGame.Focus(); 
         }
     }
 }

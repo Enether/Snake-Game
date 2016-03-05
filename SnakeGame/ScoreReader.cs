@@ -9,6 +9,7 @@ namespace SnakeGame
     {
         public ScoreReader()
         {
+            //Creates the file if it doesn't exist
             string path = Environment.CurrentDirectory + @"\Score.txt";
             if (!File.Exists(path))
             {
